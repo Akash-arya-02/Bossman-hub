@@ -25,20 +25,29 @@ SECRET_KEY = 'django-insecure-bcmvao4z^tl)do#*j=y38nejs$qavd#^jx=$ig3lm(maejnznb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+#To change here for ngrock
+ALLOWED_HOSTS = [
+    
+    '127.0.0.1', 
+    'localhost',
+    '9acf-2409-40e6-e6-de51-5407-d79f-cddc-9cdd.ngrok-free.app' # not to include https
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'shop.apps.ShopConfig',
+    'shop.apps.ShopConfig',  #can use this or shop
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'shop',
+    'chatbot.bot',
+
 ]
 
 MIDDLEWARE = [

@@ -1,9 +1,55 @@
 {% extends 'shop/basic.html' %}
 {% block title%}Bossman Hub-Tracker{% endblock %}
 {% block body %}
+
+<br>
+<div>
+    <figure class="text-center">
+      <blockquote class="display-5">
+        <b><h4>Boss moves only — your Bossman Hub order is on the move!</h4></b>
+      </blockquote>
+      <figcaption class="blockquote-footer">
+         Tracking magic in progress… 
+      </figcaption>
+    </figure>
+    </div>
+
+
 <div class="container">
     <div class="col my-4">
-        <h2>Enter your Order Id and Email address to track your order</h2>
+
+
+        <div class="card text-center">
+            <div class="card-header">
+                "Let's track your order! Just drop your Order ID and Email below."
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Tracking made easy — let's go!</h5>
+              <br>
+              <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+              <div class="d-flex justify-content-center">
+                <form class="row g-3 w-75" method="post" action="#" id="trackerForm">{% csrf_token %}
+                    <!-- <div class="form-row"> -->
+                    
+                    <div class="form-group col-md-6">
+                        <!-- <label for="inputname">Order Id</label> -->
+                        <input type="text" class="form-control" id="orderId" name="orderId" placeholder="Order Id">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <!-- <label for="inputEmail4">Email</label> -->
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                    </div>
+                <!-- </div> -->
+            </div>
+            </div>
+            <div class="card-footer text-body-secondary">
+                <button type="submit" class="btn btn-primary">Track Order</button>
+            </div>
+        </div>
+
+
+
+        <!-- <h2>Enter your Order Id and Email address to track your order</h2>
         <form method="post" action="#" id="trackerForm">{% csrf_token %}
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -16,9 +62,38 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Track Order</button>
             </div>
+    </div> -->
+
+    <div class="mt-5"></div>
+    <div class="card text-center">
+        <!-- <div class="card-header">
+            Your Delivery Status
+        </div> -->
+        <div class="card-body">
+          <h5 class="card-title">Your Delivery Status</h5>
+          <div class="my-4">
+            <ul class="list-group" id="items">
+                Enter your order Id and Email and click Track Order to find details about your order!
+            </ul>
+        </div>
+        </div>
     </div>
-    <div class="col my-4">
-        <h2>Your Order Status</h2>
+
+    <div class="mt-4"></div>
+    <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Your Shipping Summary</h5>
+          <div class="my-4">
+            <ul class="list-group" id="citems">
+                Everything You’ve Bagged So Far — Your Bossman Picks in One Place
+            </ul>
+        </div>
+        </div>
+    </div>
+
+
+    <!-- <div class="col my-4">
+        <h2>"Your Delivery Status"</h2>
         <div class="my-4">
             <ul class="list-group" id="items">
                 Enter your order Id and Email and click Track Order to find details about your order!
@@ -30,7 +105,7 @@
             <ul class="list-group" id="citems">
             </ul>
         </div>
-    </div>
+    </div> -->
 </div>
 {% endblock %}
 {% block js %}

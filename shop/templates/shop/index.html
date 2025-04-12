@@ -7,7 +7,7 @@
     }
 
     .carousel-indicators .active {
-        background-color: blue;
+        background-color: rgb(24,0,0);
     }
 
     .col-md-3 img {
@@ -25,7 +25,7 @@
 
     body .carousel-control-prev-icon,
     body .carousel-control-next-icon {
-        background-color: blue;
+        background-color: rgb(0, 0, 0);
     }
 
     .carousel-control-prev,
@@ -41,12 +41,31 @@
     }
 </style>
 {% endblock %}
+
+
+
+
+
+
 {% block body %}
 {% load static %}
 <div class="container">
     <!--Slideshow starts here -->
     {% for product, range, nSlides in allProds %}
-    <h5 class="my-4">Flash Sale On {{product.0.category}} - Recommended Items</h5>
+
+
+    <div class="mt-4"></div>
+    <div class="card text-center">
+        <div class="card-body">
+          <h2 class="card-title">Flash Sale On {{product.0.category}} </h2>
+          <p class="card-text">Recommended Items</p>
+        </div>
+      </div>
+
+
+
+
+    <!-- <h5 class="my-4">Flash Sale On {{product.0.category}} - Recommended Items</h5> -->
     <div class="row">
         <div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel">
             <ul class="carousel-indicators">
@@ -63,13 +82,13 @@
                             <img src='/media/{{i.image}}' class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title" id="namepr{{i.id}}">{{i.product_name}}</h5>
-                                <p class="card-text">{{i.desc|slice:"0:53"}}...</p>
+                                <p class="card-text">{{i.desc|slice:"0:20"}}...</p>
                                 <h6 class="card-title">Price : <span id="pricepr{{i.id}}">{{i.price}}</span></h6>
                                 <span id="divpr{{i.id}}" class="divpr">
                                     <button id="pr{{i.id}}" class="btn btn-primary cart">Add To Cart</button>
                                 </span>
                                 <a href="/shop/products/{{i.id}}"><button id="qv{{i.id}}"
-                                        class="btn btn-primary cart">QuickView</button></a>
+                                        class="btn btn-primary cart">Flashview</button></a>
                             </div>
                         </div>
                     </div>
@@ -92,6 +111,12 @@
     {% endfor %}
 </div>
 {% endblock %}
+
+
+
+
+
+
 {% block js %}
 
 <script>
@@ -118,19 +143,22 @@
     });
 
     //Add Popover to cart
+    
     $('#popcart').popover();
-    //updatePopover(cart);
+    
+
+    
     function updatePopover(cart) {
         console.log('We are inside updatePopover');
         var popStr = "";
-        popStr = popStr + "<h5> Cart for your items in my shopping cart </h5><div class='mx-2 my-2'>";
+        popStr = popStr + "<h5> Bossman Shopping Bag </h5><div class='mx-2 my-2'>";
         var i = 1;
         for (var item in cart) {
             popStr = popStr + "<b>" + i + "</b>. ";
             popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 19) + "... Qty: " + cart[item][0] + '</br>';
             i = i + 1;
         }
-        popStr = popStr + "</div><a class='btn btn-primary' id ='checkout' href='/shop/checkout'>Checkout</a> <a class='btn btn-primary clearCart' id ='clearCart'>Clear Cart</a>";
+        popStr = popStr + "</div><a class='btn btn-primary' id ='checkout' href='/shop/checkout'>Checkout</a> <a class='btn btn-primary clearCart text-white' id ='clearCart'>Clear Cart</a>";
 
         console.log(popStr);
         document.getElementById('popcart').setAttribute('data-content', popStr);
